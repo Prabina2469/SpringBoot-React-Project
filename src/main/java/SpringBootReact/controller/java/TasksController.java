@@ -51,17 +51,7 @@ public class TasksController {
         tasksService.deleteTask(id);
         return ResponseEntity.ok().body("Task deleted successfully");
     }
-    @PostMapping("/test")  // ✅ Ensure "/test" is explicitly defined
 
-    public ResponseEntity<?> testDb(@RequestBody Tasks task) {
-        System.out.println("🚀 Received request at /tasks/test");
-        System.out.println("📩 Task data: " + task);
-
-        Tasks savedTask = tasksRepository.saveAndFlush(task);
-        System.out.println("✅ Task Saved: " + savedTask);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedTask);
-    }
 
    
 }
