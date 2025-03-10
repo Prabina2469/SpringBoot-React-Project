@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RegistrationPage from "./pages/RegistrationPage";
+import LoginPage from "./pages/LoginPage";
+import TaskCreationPage from "./pages/TaskCreationPage";
+import TaskEditDeletePage from "./pages/TaskEditDeletePage";
+import TaskListPage from "./pages/TaskListPage";
+import Dashboard from "./pages/Dashboard";  // ✅ Import Dashboard
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<RegistrationPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />  {/* ✅ Dashboard Route */}
+        <Route path="/tasks" element={<TaskListPage />} />
+        <Route path="/tasks/new" element={<TaskCreationPage />} />
+        <Route path="/tasks/edit/:id" element={<TaskEditDeletePage />} />
+      </Routes>
+    </Router>
   );
 }
 
